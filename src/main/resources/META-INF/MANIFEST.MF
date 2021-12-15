@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: com.kuraion.enchantment_lore_forge.Enchantment_Lore_Forge
+

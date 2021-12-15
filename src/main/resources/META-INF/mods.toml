@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[39,)"
+license="MIT License"
+
+[[mods]]
+modId="enchantment_lore_forge"
+version="1.0.0"
+displayName="Enchantment Lore Forge"
+credits="Huge credit goes to the original author supersaiyansubtlety"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/enchantment-lore-forge"
+authors="Kuraion, supersaiyansubtlety"
+logoFile="logo.png"
+description='''Open enchanted books like written books to read their description and lore.'''
+
+[[dependencies.enchantment_lore_forge]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18,]"
+    ordering="NONE"
+    side="BOTH"
+
+
+
+
