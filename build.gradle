@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.0'
+version = '1.1'
 group = 'com.kuraion.enchantment_lore_forge'
 archivesBaseName = 'enchantment_lore_forge'
 
