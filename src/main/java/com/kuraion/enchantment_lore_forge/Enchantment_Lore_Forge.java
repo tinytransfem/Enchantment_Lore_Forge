@@ -9,8 +9,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -44,7 +44,7 @@ public class Enchantment_Lore_Forge {
 
     @SubscribeEvent
     public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-        Player entity = event.getPlayer();
+        Player entity = event.getEntity();
         InteractionHand hand = event.getHand();
         Level world = entity.getLevel();
         useEnchantedBook(entity, world, hand);
@@ -76,7 +76,7 @@ public class Enchantment_Lore_Forge {
         ListTag pages = new ListTag();
 
         if (storedEnchantIds.isEmpty())
-            pages.add(StringTag.valueOf(new TranslatableComponent(MOD_ID_DOT + "contains_no_enchantments").getString()));
+            pages.add(StringTag.valueOf(Component.translatable(MOD_ID_DOT + "contains_no_enchantments").getString()));
         else {
             for (String idString : storedEnchantIds) {
                 boolean translated = addTranslatedPages(pages, MOD_ID_DOT + idString + ".description");
@@ -84,7 +84,7 @@ public class Enchantment_Lore_Forge {
                 translated |= addTranslatedPages(pages, MOD_ID_DOT + idString + ".lore");
 
                 if (!translated)
-                    pages.add(StringTag.valueOf(new TranslatableComponent(MOD_ID_DOT + "no_translation_for").getString() + idString));
+                    pages.add(StringTag.valueOf(Component.translatable(MOD_ID_DOT + "no_translation_for").getString() + idString));
             }
         }
 
@@ -97,7 +97,7 @@ public class Enchantment_Lore_Forge {
 
     private static boolean addTranslatedPages(ListTag nbtList, String loreKey) {
         if (I18n.exists(loreKey)) {
-            String translatedLore = new TranslatableComponent(loreKey).getString();
+            String translatedLore = Component.translatable(loreKey).getString();
             if (!translatedLore.isEmpty()) {
                 nbtList.addAll(SplitToPageTags(translatedLore));
                 return true;
